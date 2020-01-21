@@ -19,7 +19,7 @@ namespace SS_Blog.Controllers
         public ActionResult Index()
         {
             return View(db.BlogPosts.ToList());
-            
+
         }
 
         // GET: BlogPosts/Details/5
@@ -37,6 +37,7 @@ namespace SS_Blog.Controllers
             return View(blogPost);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: BlogPosts/Create
         public ActionResult Create()
         {
@@ -54,7 +55,7 @@ namespace SS_Blog.Controllers
             {
                 var Slug = StringUtilities.URLFriendly(blogPost.Title);
                 if (String.IsNullOrWhiteSpace(Slug))
-                { 
+                {
                     ModelState.AddModelError("Title", "Invalid title");
                     return View(blogPost);
                 }
@@ -70,6 +71,7 @@ namespace SS_Blog.Controllers
         }
 
         // GET: BlogPosts/Edit/5
+       [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

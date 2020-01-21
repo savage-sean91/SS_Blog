@@ -1,44 +1,192 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+    <title>Sean's BlogPosts</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="The Dream Multipurpose HTML5 Template">
+    <meta name="author" content="CraftDzine">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/BlogPosts.ico" />
+
+    <!-- CSS Global -->
+    <link href="~/Template/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Template/css/style.css" rel="stylesheet" />
+    <link href="~/Template/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Template/plugins/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link href="~/Template/plugins/FlexSlider/jquery.flexslider.css" rel="stylesheet" />
+    <link href="~/Template/css/animate.css" rel="stylesheet" />
+    <link href="~/Template/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Template/css/magnific-popup.css" rel="stylesheet" />
+
+    <!-- WEB FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:500,800" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <!-- Start Main Wrapper -->
+    <div class="wrapper">
+       
+
+        <!-- Start Slidingbar -->
+        <!-- End Slidingbar -->
+        <!-- Start Header -->
+        <div class="header cd-header-block">
+            <!--Start Navbar -->
+            <div class="navbar mega-menu" role="navigation">
+                <div class="container">
+                    <!-- Start Brand and Mobile Display -->
+                    <div class="menu-container">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".cd-navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <!-- Start Navbar Brand -->
+                        <div class="navbar-brand">
+                            <img class="header-logo" src="~/Template/img/BP_BlogPosts.png" alt="Logo">
+                        </div>
+                        <!-- End Navbar Brand -->
+                        <!-- Start Header Shopping Cart -->
+                        <!-- End Header Shopping Cart -->
+                    </div>
+
+                    <!-- Nav Links -->
+                    <div class="collapse navbar-collapse cd-navbar">
+                        <div class="menu-container">
+                            <ul class="nav navbar-nav">
+                                <!-- Start Home -->
+                                <li class="dropdown">
+                                    <a href="@Url.Action("Index","BlogPosts")">
+                                        Home
+                                    </a>
+
+                                </li>
+                                @*<li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                            Portfolio
+                                        </a>
+                                        <ul class="dropdown-menu ">
+                                            <li><a href="portfolio_1col.html"><i class="fa fa-caret-right"></i>1 Column</a></li>
+                                            <li><a href="portfolio_2col.html"><i class="fa fa-caret-right"></i>2 Column</a></li>
+                                            <li><a href="portfolio_3col.html"><i class="fa fa-caret-right"></i>3 Column</a></li>
+                                            <li><a href="portfolio_4col.html"><i class="fa fa-caret-right"></i>4 Column</a></li>
+                                            <li><a href="portfolio_fullwidth.html"><i class="fa fa-caret-right"></i>Full Width</a></li>
+                                            <li><a href="portfolio_left.html"><i class="fa fa-caret-right"></i>Left Sidebar</a></li>
+                                            <li><a href="portfolio_right.html"><i class="fa fa-caret-right"></i>Right Sidebar</a></li>
+                                            <li><a href="portfolio_signal.html"><i class="fa fa-caret-right"></i>Signal Page</a></li>
+                                        </ul>
+                                    </li>*@
+                                <!-- End Home -->
+                                <!-- Start Pages -->
+                                <li class="dropdown">
+                                    <a href="@Url.Action("Register", "Account")">
+                                        Register
+                                    </a>
+                                    @*<ul class="dropdown-menu">
+                                             About Pages
+                                             End About Pages
+                                             Service Pages
+                                             End Service Pages
+                                             Contacts
+                                             End Contacts
+                                             Pricing Tables
+                                             End Pricing Tables
+                                             FAQs Pages
+                                             End FAQs Pages
+                                             Error Pages
+                                             End Error Pages
+                                        </ul>*@
+                                </li>
+                                <!-- End Pages -->
+                                <!-- Start Shop -->
+                                <!-- End Shop -->
+                                <!-- Start Blog -->
+                                <li class="dropdown">
+                                    <a href="@Url.Action("Login","Account")">
+                                        Login
+                                    </a>
+                                    @*<ul class="dropdown-menu ">
+                                            <li><a href="blog_2col.html"><i class="fa fa-caret-right"></i>2 Columns</a></li>
+                                            <li><a href="blog_3col.html"><i class="fa fa-caret-right"></i>3 Columns</a></li>
+                                            <li><a href="blog_fullwidth.html"><i class="fa fa-caret-right"></i>Full Width</a></li>
+                                            <li><a href="blog_left.html"><i class="fa fa-caret-right"></i>Left Sidebar</a></li>
+                                            <li><a href="blog_right.html"><i class="fa fa-caret-right"></i>Right Sidebar</a></li>
+                                            <li><a href="blog_signal.html"><i class="fa fa-caret-right"></i>Signal Page</a></li>
+                                        </ul>*@
+                                </li>
+                                <!-- End Blog -->
+                                <!-- Start Portfolio -->
+                                <!-- End Portfolio -->
+                                <!-- Start Shortcodes -->
+                                <!-- End Shortcodes -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+        <!-- End Navbar -->
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+            <div class="main-footer">
+                <div class="container" style="background-color: white">
+                    <div class="row">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+                        <!-- Start Contact -->
+                        <div class="col col-md-12 col-sm-6 footer-links">
+                            <h3 class="cv-theme-widget-title" style="text-align:center">
+                                <span class="main-border">Contact Us</span>
+                            </h3>
+
+                            <ul class="contact-list-unstyled">
+                                <li><i class="fa fa-home"></i>1231 Shields Rd #5, Kernersville, NC 27284</li>
+                                <li><i class="fa fa-phone"></i> Phone : (336) 231-8632</li>
+                                <li><i class="fa fa-envelope-o"></i>Email:  <a href="mailto:savage.sean91@gmail.com">savage.sean91@gmail.com</a></li>
+                                <li><i class="fa fa-connectdevelop"></i>Web :  <a href="https://www.coderfoundry.com/">coderfoundry.com</a></li>
+                            </ul>
+
+                        </div>
+                        <!-- End Contact -->
+                        <!-- Start Quick Links -->
+                        <!-- End  Quick Links -->
+                        <!-- Start Recent Works -->
+                        <!-- End  Recent Works -->
+                        <!-- Start Tags -->
+                        <!-- End Tags -->
+
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+        <!-- End Foooter-->
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+    <!-- JS Global Compulsory -->
+    <script src="~/Template/js/bootstrap.min.js"></script>
+    <script src="~/Template/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Template/js/filter.js"></script>
+    <script src="~/Template/plugins/waypoints/waypoints.min.js"></script>
+    <script src="~/Template/plugins/counterup/jquery.counterup.min.js"></script>
+    <script src="~/Template/plugins/FlexSlider/jquery.flexslider-min.js"></script>
+    <script src="~/Template/js/magnific-popup.min.js"></script>
+    <script src="~/Template/js/jquery.selectBox.js"></script>
+    <script src="~/Template/js/custom.js"></script>
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

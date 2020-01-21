@@ -51,7 +51,7 @@ namespace SS_Blog.Migrations
             {
                 userManager.Create(new ApplicationUser
                 {
-                    UserName = "CFMOD",
+                    UserName = "moderator@coderfoundry.com",
                     Email = "moderator@coderfoundry.com",
                     FirstName = "CF",
                     LastName = "moderator",

@@ -449,7 +449,7 @@ namespace SS_Blog.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "BlogPosts");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
