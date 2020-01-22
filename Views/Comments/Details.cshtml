@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PostId)
+            @Html.DisplayNameFor(model => model.Blog.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PostId)
+            @Html.DisplayFor(model => model.Blog.Title)
         </dd>
 
         <dt>
@@ -64,3 +64,11 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@*@if (User.Identity.IsAuthenticated)
+    {
+        //leave a comment
+    }
+    elselse {
+        <p>@Html.ActionLink("Login","Login","Account", new { returnUrl = Url.Action("Details", "BlogPosts", new { Slug = Model.Slug }) }, new { @class = Html attributes</p>*@
+

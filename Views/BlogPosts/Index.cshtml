@@ -34,49 +34,57 @@
 
                     @foreach (var item in Model)
                     {
-                        <div class="blog-dis">
-                            <h2 class="entry-title">@item.Title</h2>
-                            <p>@Html.Raw(item.Body)</p>
-                            <p class="post-meta">
-                                <span class="author vcard">
+                <div class="blog-dis">
+                    <h2 class="entry-title">@item.Title</h2>
+                    <p>@Html.Raw(item.Body)</p>
+                    <p class="post-meta">
+                        <span class="author vcard">
 
-                                </span>
-                                <span class="published">@item.Created</span>
-                            <p>Slug:  @item.Slug</p>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                @Html.ActionLink("Edit ", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info" })
-                            @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })}
-                        </div>
+                        </span>
+                        <span class="published">@item.Created</span>
+                    <p>Slug:  @item.Slug</p>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Edit ", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })}
+                    else
+                    {
+                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })
+                    }
+                    @if (item.MediaURL != null)
+                    {
+                    <img class="img-responsive" src="@item.MediaURL" alt="">
+                        }
+                </div>
                     }
 
                 </div>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
                 <div class="standard-post-thumbnail">
-                    @*<div class="post-image-block">
-                        <a href="blog_signal.html"><img src="img/portfolio/portfolio5.jpg" alt="" class="img-responsive"></a>
-                    </div>*@
+                    <div class="post-image-block">
+                            <a href="blog_signal.html"><img src="img/portfolio/portfolio5.jpg" alt="" class="img-responsive"></a>
+                        </div>
                     @*<div class="blog-dis">
-                        <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
-                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Corporate, Joomla</a>  </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
-                    </div>*@
+                            <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
+                            <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Corporate, Joomla</a>  </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
+                        </div>*@
                 </div>
             </div>
             @*<div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
-                <div class="standard-post-thumbnail">
-                    <div class="post-image-block">
-                        <a href="blog_signal.html"><img src="img/portfolio/portfolio6.jpg" alt="" class="img-responsive"></a>
+                    <div class="standard-post-thumbnail">
+                        <div class="post-image-block">
+                            <a href="blog_signal.html"><img src="img/portfolio/portfolio6.jpg" alt="" class="img-responsive"></a>
+                        </div>
+                        <div class="blog-dis">
+                            <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
+                            <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Photography, Joomla</a>  </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
+                        </div>
                     </div>
-                    <div class="blog-dis">
-                        <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
-                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Photography, Joomla</a>  </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
-                    </div>
-                </div>
-            </div>*@
+                </div>*@
         </div>
 
         <!-- Start Pagination-->

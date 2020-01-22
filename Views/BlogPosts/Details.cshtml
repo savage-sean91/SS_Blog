@@ -55,6 +55,10 @@
         </dt>
 
         <dd>
+            @if (Model.MediaURL != null)
+            {              
+                <img class="img-responsive" src="@Model.MediaURL" alt="" />
+            }
             @Html.DisplayFor(model => model.MediaURL)
         </dd>
 
@@ -65,11 +69,14 @@
         <dd>
             @Html.DisplayFor(model => model.Published)
         </dd>
-        
+
     </dl>
+   
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-    
+
+
+
 </p>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using SS_Blog.Models;
 
 namespace SS_Blog.Controllers
@@ -17,7 +18,7 @@ namespace SS_Blog.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.Author);
+            var comments = db.Comments.Include(c => c.Author).Include(c => c.Blog);
             return View(comments.ToList());
         }
 
@@ -40,24 +41,30 @@ namespace SS_Blog.Controllers
         public ActionResult Create()
         {
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.BlogId = new SelectList(db.BlogPosts, "Id", "Title");
             return View();
         }
 
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public ActionResult Create([Bind(Include = "Id,BlogId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
             {
+                comment.Created = DateTimeOffset.Now;
+                comment.AuthorId = User.Identity.GetUserId();
+
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
+            ViewBag.BlogId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogId);
             return View(comment);
         }
 
@@ -74,6 +81,7 @@ namespace SS_Blog.Controllers
                 return HttpNotFound();
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
+            ViewBag.BlogId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogId);
             return View(comment);
         }
 
@@ -82,7 +90,7 @@ namespace SS_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public ActionResult Edit([Bind(Include = "Id,BlogId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +99,7 @@ namespace SS_Blog.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
+            ViewBag.BlogId = new SelectList(db.BlogPosts, "Id", "Title", comment.BlogId);
             return View(comment);
         }
 
