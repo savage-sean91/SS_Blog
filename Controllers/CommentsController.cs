@@ -38,7 +38,6 @@ namespace SS_Blog.Controllers
         }
 
         // GET: Comments/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
@@ -105,7 +104,6 @@ namespace SS_Blog.Controllers
         }
 
         // GET: Comments/Delete/5
-        
         public ActionResult Delete(int? id)
         {
             if (id == null)
