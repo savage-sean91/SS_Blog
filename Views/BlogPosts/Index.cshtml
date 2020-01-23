@@ -1,91 +1,114 @@
-﻿@model IEnumerable<SS_Blog.Models.BlogPost>
+﻿@using PagedList
+@using PagedList.Mvc
 
+@model IPagedList<SS_Blog.Models.BlogPost>
 
+<body class="SeanStyle">
+   
 
-<!-- End Header -->
-<!-- Start Breadcrumb -->
-<div class="page-banner no-subtitle">
-    <div class="container">
-        <div class="row">
-            <div class="text-center">
+    <!-- End Header -->
+    <!-- Start Breadcrumb -->
+    <div class="page-banner no-subtitle">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
 
-            </div>
-            <div class="text-center">
+                </div>
+                <div class="text-center">
 
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Breadcrumb -->
-<!-- Start Blog-->
-<section class="main-contain">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
-                <div class="standard-post-thumbnail">
-                    <div class="post-image-block">
-                        <div id="owl-blog" class="owl-carousel owl-theme">
-                            <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio2.jpg" alt="" class="img-responsive"></a></div>
-                            <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio1.jpg" alt="" class="img-responsive"></a></div>
-                            <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio3.jpg" alt="" class="img-responsive"></a></div>
-                        </div>
-
-                    </div>
-
-                    @foreach (var item in Model)
-                    {
-                <div class="blog-dis">
-                    <h2 class="entry-title">@item.Title</h2>
-                    <p>@Html.Raw(item.Body)</p>
-                    <p class="post-meta">
-                        <span class="author vcard">
-
-                        </span>
-                        <span class="published">@item.Created</span>
-                    <p>Slug:  @item.Slug</p>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        @Html.ActionLink("Edit ", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })}
-                    else
-                    {
-                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })
-                    }
-                    @if (item.MediaURL != null)
-                    {
-                    <img class="img-responsive" src="@item.MediaURL" alt="">
-                        }
-                </div>
-                    }
-
-                </div>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
-                <div class="standard-post-thumbnail">
-                    <div class="post-image-block">
-                            <a href="blog_signal.html"><img src="img/portfolio/portfolio5.jpg" alt="" class="img-responsive"></a>
-                        </div>
-                    @*<div class="blog-dis">
-                            <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
-                            <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Corporate, Joomla</a>  </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
-                        </div>*@
-                </div>
-            </div>
-            @*<div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
+    <!-- End Breadcrumb -->
+    <!-- Start Blog-->
+    <section class="main-contain">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
                     <div class="standard-post-thumbnail">
                         <div class="post-image-block">
-                            <a href="blog_signal.html"><img src="img/portfolio/portfolio6.jpg" alt="" class="img-responsive"></a>
+                            <div id="owl-blog" class="owl-carousel owl-theme">
+                                <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio2.jpg" alt="" class="img-responsive"></a></div>
+                                <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio1.jpg" alt="" class="img-responsive"></a></div>
+                                <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio3.jpg" alt="" class="img-responsive"></a></div>
+                            </div>
+
                         </div>
-                        <div class="blog-dis">
-                            <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
-                            <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Photography, Joomla</a>  </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
-                        </div>
+
+                        @foreach (var item in Model)
+                        {
+                            @*<div class="blog-dis">
+                                    <h2 class="entry-title">@item.Title</h2>
+                                    <p>@Html.Raw(item.Body)</p>
+                                    <p class="post-meta">
+                                        <span class="author vcard">
+
+                                        </span>
+                                        <span class="published">@item.Created</span>
+                                    <p>Slug:  @item.Slug</p>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        @Html.ActionLink("Edit ", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info" })
+                                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })}
+                                    else
+                                    {
+                                        @Html.ActionLink("Details", "Details", new { slug = item.Slug }, new { @class = "btn btn-warning" })
+                                    }
+                                    @if (item.MediaURL != null)
+                                    {
+                                        <img class="img-responsive" src="@item.MediaURL" alt="">
+                                    }
+                                </div>*@
+
+                            <div class="col-md-offset-2 col-sm-8 col-xs-12 cv-theme-pa-30">
+                                <div class="standard-post-thumbnail">
+                                    <div class="post-image-block">
+                                        <img src="@item.MediaURL" alt="" class="img-responsive" style="height:50%; width:50%;" />
+                                        <div id="owl-blog" class="owl-carousel owl-theme">
+                                            <div class="item"><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })"></a></div>
+                                            @*<div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio1.jpg" alt="" class="img-responsive"></a></div>
+                                                <div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio3.jpg" alt="" class="img-responsive"></a></div>*@
+                                        </div>
+
+                                    </div>
+                                    <div class="blog-dis">
+                                        <h2 class="entry-title"><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })">@item.Title</a></h2>
+                                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Sean Savage</a></span>  |  <span class="published">@item.Created.ToString("MMMM dd, yyyy")</span>  |  <a rel="category tag" href="#">Photography, Joomla</a>  </p>
+                                        <p>@Html.Raw(item.Body)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
                     </div>
-                </div>*@
+                </div>
+                @*<div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
+                    <div class="standard-post-thumbnail">
+                        <div class="post-image-block">
+                            <a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })"><img src="img/portfolio/portfolio5.jpg" alt="" class="img-responsive"></a>
+                        </div>*@
+                @*<div class="blog-dis">
+                        <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
+                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Corporate, Joomla</a>  </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
+                    </div>*@
+            </div>
         </div>
+        @*<div class="col-md-12 col-sm-12 col-xs-12 cv-theme-pa-30">
+                <div class="standard-post-thumbnail">
+                    <div class="post-image-block">
+                        <a href="blog_signal.html"><img src="img/portfolio/portfolio6.jpg" alt="" class="img-responsive"></a>
+                    </div>
+                    <div class="blog-dis">
+                        <h2 class="entry-title"><a href="blog_signal.html">The standard Lorem Ipsum passage</a></h2>
+                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Admin</a></span>  |  <span class="published">May 9, 2016</span>  |  <a rel="category tag" href="#">Photography, Joomla</a>  </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenatis aliquet. Morbi mollis mollis pellentesque. Aenean vitae erat velit. Maecenas urna sapien, dignissim a augue vitae, porttitor luctus urna. Morbi scelerisque semper congue.... </p>
+                    </div>
+                </div>
+            </div>*@
+
 
         <!-- Start Pagination-->
         <p>
@@ -95,20 +118,42 @@
             }
         </p>
 
-        <div class="cd-pagination">
-            <ul class="pagination">
-                <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
+        @*<div class="cd-pagination">
+                <ul class="pagination">
+                    <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>*@
+
+        @using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, htmlAttributes: new { @class = "form" }))
+        {
+            <div class="controls controls-row search-row">
+                <input id="searchStr" name="searchStr" class="input-block-level" type="text"
+                       placeholder="Search">
+                <button id="searchStr" name="searchStr" class="btn btn-sm btn btn-info" type="submit">
+                    <i class="icon-search"></i>
+                    search here
+                </button>
+            </div>
+        }
+
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+
+
         <!-- End Pagination-->
-    </div>
-</section>
+        @* @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }));*@
+
+
+
+    </section>
+</body>
 <!-- End Blog-->
 <!-- Start Foooter-->
 <!-- End Main Wrapper -->

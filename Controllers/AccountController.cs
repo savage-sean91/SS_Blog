@@ -394,6 +394,11 @@ namespace SS_Blog.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult LogOffCustom()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
 
         //
         // GET: /Account/ExternalLoginFailure
