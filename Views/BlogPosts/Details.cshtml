@@ -6,6 +6,7 @@
 
 <h2>Details</h2>
 
+
 <div>
     <h4>BlogPost</h4>
     <hr />
@@ -72,6 +73,14 @@
 
     </dl>
    
+</div>
+<div class="row">
+    @foreach (var item in Model.Comments)
+    {
+        <p>@item.Created </p>
+        <p>@Html.Raw(item.Body)</p>
+        <p>@item.Author.FirstName @item.Author.LastName</p>
+    }
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
