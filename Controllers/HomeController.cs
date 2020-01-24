@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SS_Blog.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -40,8 +41,8 @@ namespace SS_Blog.Controllers
                 {
                     var body = "<p>Email From: <bold>{0}</bold>" +
                                 "({1})</p><p>Message:</p><p>{2}</p>";
-                    model.Body = "This is a message from your blog site. The name and" +
-                                 "the email of the contacting person is above.";
+                    //model.Body = "This is a message from your blog site. The name and" +
+                    //             "the email of the contacting person is above.";
 
                     var svc = new EmailService();
                     var msg = new IdentityMessage()

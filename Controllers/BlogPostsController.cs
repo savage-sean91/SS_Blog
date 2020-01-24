@@ -14,6 +14,7 @@ using PagedList.Mvc;
 
 namespace SS_Blog.Controllers
 {
+    [RequireHttps]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -165,6 +166,7 @@ namespace SS_Blog.Controllers
         }
 
         // GET: BlogPosts/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -11,6 +11,7 @@ using SS_Blog.Models;
 
 namespace SS_Blog.Controllers
 {
+    [RequireHttps]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -13,6 +13,7 @@ using SS_Blog.Models;
 namespace SS_Blog.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
