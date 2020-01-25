@@ -72,6 +72,7 @@
                                     </a>
 
                                 </li>
+                                @Html.Partial("_LoginPartial")
                                 @*<li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                             Portfolio
@@ -89,10 +90,12 @@
                                     </li>*@
                                 <!-- End Home -->
                                 <!-- Start Pages -->
-                                <li class="dropdown">
+                                <!--START REGISTER-->
+                                @*<li class="dropdown">
                                     <a href="@Url.Action("Register", "Account")">
                                         Register
-                                    </a>
+                                    </a>*@
+                                    <!--END REGISTER-->
                                     @*<ul class="dropdown-menu">
                                              About Pages
                                              End About Pages
@@ -107,15 +110,17 @@
                                              Error Pages
                                              End Error Pages
                                         </ul>*@
-                                </li>
+                                
                                 <!-- End Pages -->
                                 <!-- Start Shop -->
                                 <!-- End Shop -->
                                 <!-- Start Blog -->
-                                <li class="dropdown">
+                                <!--START LOGIN TAB-->
+                                @*<li class="dropdown">
                                     <a href="@Url.Action("Login","Account")">
                                         Login
-                                    </a>
+                                    </a>*@
+                                <!--END LOGIN TAB-->
                                     @*<ul class="dropdown-menu ">
                                             <li><a href="blog_2col.html"><i class="fa fa-caret-right"></i>2 Columns</a></li>
                                             <li><a href="blog_3col.html"><i class="fa fa-caret-right"></i>3 Columns</a></li>
@@ -124,7 +129,14 @@
                                             <li><a href="blog_right.html"><i class="fa fa-caret-right"></i>Right Sidebar</a></li>
                                             <li><a href="blog_signal.html"><i class="fa fa-caret-right"></i>Signal Page</a></li>
                                         </ul>*@
+                                
+
+                                <li class="dropdown">
+                                <a href="@Url.Action("Contact", "Home")">
+                                    Contact
+                                </a> 
                                 </li>
+
                                 <!-- End Blog -->
                                 <!-- Start Portfolio -->
                                 <!-- End Portfolio -->

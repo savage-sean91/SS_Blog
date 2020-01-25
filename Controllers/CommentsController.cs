@@ -53,7 +53,7 @@ namespace SS_Blog.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogId")] Comment comment, string CommentBody)
+        public ActionResult Create([Bind(Include = "BlogId")] Comment comment, string CommentBody, int BlogId)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace SS_Blog.Controllers
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 var slug = db.BlogPosts.Find(comment.BlogId).Slug;
-                return RedirectToAction("Index", "BlogPost", new { Slug = slug });
+                return RedirectToAction("Details", "BlogPosts", new { Slug = slug });
 
             }
 

@@ -75,8 +75,10 @@
                                     </div>
                                     <div class="blog-dis">
                                         <h2 class="entry-title"><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })">@item.Title</a></h2>
-                                        <p class="post-meta">By <span class="author vcard"><a title="Posts By Admin" href="#">Sean Savage</a></span>  |  <span class="published">@item.Created.ToString("MMMM dd, yyyy")</span>  | 
-                                        <a rel="category tag" href="#">Photography, Joomla</a></p>
+                                        <p class="post-meta">
+                                            By <span class="author vcard"><a title="Posts By Admin" href="#">Sean Savage</a></span>  |  <span class="published">@item.Created.ToString("MMMM dd, yyyy")</span>  |
+                                            <a rel="category tag" href="#">Photography, Joomla</a>
+                                        </p>
                                         <p>@Html.Raw(item.Body)</p>
                                         <p>
                                             @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-info btn-md" })
