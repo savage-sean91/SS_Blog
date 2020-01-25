@@ -1,5 +1,6 @@
 ﻿@model SS_Blog.Models.BlogPost
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -57,7 +58,7 @@
 
         <dd>
             @if (Model.MediaURL != null)
-            {              
+            {
                 <img class="img-responsive" src="@Model.MediaURL" alt="" />
             }
             @Html.DisplayFor(model => model.MediaURL)
@@ -72,20 +73,85 @@
         </dd>
 
     </dl>
-   
+
 </div>
 <div class="row">
     @foreach (var item in Model.Comments)
     {
-        <p>@item.Created </p>
-        <p>@Html.Raw(item.Body)</p>
+        <p>@item.Created</p>
+        <p>@Html.Raw(item.CommentBody)</p>
         <p>@item.Author.FirstName @item.Author.LastName</p>
     }
 </div>
+
+<div class="blog-comments-block cv-theme-30">
+    <h1 class="comments_title">@Model.Comments.Count() Comments</h1>
+    <div class="media comment_section">
+        <div class="pull-left post_comments">
+            <a href="#"><img src="img/blog/comments1.png" class="img-circle" alt="" /></a>
+        </div>
+        @foreach (var Comment in Model.Comments)
+        {
+            <div class="media-body post_reply_comments">
+                <h4>@Comment.Author.FirstName @Comment.Author.LastName</h4>
+                <h6>@Comment.Created.ToString("mmm dd, yyyy")</h6>
+                <p>@Html.Raw(Comment.CommentBody)</p>
+                @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                {
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", "Comments", new { id = Comment.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Comments", new { id = Comment.Id }, null)
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    @using (Html.BeginForm("Create", "Comments", new { BlogId = Model.Id },FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("BlogId", Model.Id)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextArea("CommentBody", new { row = 5, cols = 30, placeholder = "Add Comment", Id = "RTE" })
+            </div>
+        </div>
+        <div class="form-group">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            }
+        </div>
+    }
+
+
+    @*<div class="media comment_section admin-reply">
+            <div class="pull-left post_comments">
+                <a href="#"><img src="img/blog/comments1.png" class="img-circle" alt="" /></a>
+            </div>
+            <div class="media-body post_reply_comments">
+                <h4>Jhon Doe</h4>
+                <h6>March 22 2016</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                <a href="#">Reply</a>
+            </div>
+        </div>*@
+    @*<div class="media comment_section">
+            <div class="pull-left post_comments">
+                <a href="#"><img src="img/blog/comments1.png" class="img-circle" alt="" /></a>
+            </div>
+            <div class="media-body post_reply_comments">
+                <h4>Jhon Doe</h4>
+                <h6>March 22 2016</h6>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+                <a href="#">Reply</a>
+            </div>
+        </div>*@
+</div>
+}
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-
-
-
 </p>

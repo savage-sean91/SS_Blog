@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Blog.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Body)
+            @Html.DisplayNameFor(model => model.CommentBody)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Created)
@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.Blog.Title)
         </td>
         <td>
-            @Html.Raw(item.Body)
+            @Html.Raw(item.CommentBody)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Created)

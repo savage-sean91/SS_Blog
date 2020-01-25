@@ -12,7 +12,7 @@ namespace SS_Blog.Models
         public int BlogId { get; set; }
         public string AuthorId { get; set; }
         [AllowHtml]
-        public string Body { get; set; }
+        public string CommentBody { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
         public string UpdateReason { get; set; }

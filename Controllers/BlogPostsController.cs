@@ -78,7 +78,7 @@ namespace SS_Blog.Controllers
                 result = db.BlogPosts.AsQueryable();
                 result = result.Where(p => p.Title.Contains(searchStr) ||
                                p.Body.Contains(searchStr) ||
-                               p.Comments.Any(c => c.Body.Contains(searchStr) ||
+                               p.Comments.Any(c => c.CommentBody.Contains(searchStr) ||
                                c.Author.FirstName.Contains(searchStr) ||
                                  c.Author.LastName.Contains(searchStr) ||
                                  c.Author.DisplayName.Contains(searchStr) ||

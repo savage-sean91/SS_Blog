@@ -53,16 +53,20 @@ namespace SS_Blog.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,BlogId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public ActionResult Create([Bind(Include = "BlogId")] Comment comment, string CommentBody)
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
                 comment.Created = DateTimeOffset.Now;
-                comment.AuthorId = User.Identity.GetUserId();
+                comment.AuthorId = userId;
+                comment.CommentBody = CommentBody;
 
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                var slug = db.BlogPosts.Find(comment.BlogId).Slug;
+                return RedirectToAction("Index", "BlogPost", new { Slug = slug });
+
             }
 
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comment.AuthorId);
@@ -92,7 +96,7 @@ namespace SS_Blog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,BlogId,AuthorId,Body,Created,Updated,UpdateReason")] Comment comment)
+        public ActionResult Edit([Bind(Include = "Id,BlogId,AuthorId,CommentBody,Created,Updated,UpdateReason")] Comment comment)
         {
             if (ModelState.IsValid)
             {
