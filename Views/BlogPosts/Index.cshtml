@@ -65,7 +65,7 @@
                             <div class="col-md-offset-2 col-sm-8 col-xs-12 cv-theme-pa-30">
                                 <div class="standard-post-thumbnail">
                                     <div class="post-image-block">
-                                        <img src="@item.MediaURL" alt="" class="img-responsive" style="height:50%; width:50%;" />
+                                        <img src="@item.MediaURL" alt="" class="img-responsive" style="height:50%; width:100%;" />
                                         <div id="owl-blog" class="owl-carousel owl-theme">
                                             <div class="item"><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })"></a></div>
                                             @*<div class="item"><a href="blog_signal.html"><img src="img/portfolio/portfolio1.jpg" alt="" class="img-responsive"></a></div>
@@ -76,8 +76,8 @@
                                     <div class="blog-dis">
                                         <h2 class="entry-title"><a href="@Url.Action("Details", "BlogPosts", new { Slug = item.Slug })">@item.Title</a></h2>
                                         <p class="post-meta">
-                                            By <span class="author vcard"><a title="Posts By Admin" href="#">Sean Savage</a></span>  |  <span class="published">@item.Created.ToString("MMMM dd, yyyy")</span>  |
-                                            <a rel="category tag" href="#">Photography, Joomla</a>
+                                            By <span class="author vcard"><a title="Posts By Admin" href="#">Sean Savage</a></span>  |  <span class="published">@item.Created.ToString("MMMM dd, yyyy")</span>  
+                                            
                                         </p>
                                         <p>@Html.Raw(item.Body)</p>
                                         <p>
